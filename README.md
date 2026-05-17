@@ -34,7 +34,7 @@ various professional factors.
 4. Open: `http://127.0.0.1:5000`
 
 ## 🌍 Live Demo
-[Click here to try it!](https://salary-predictor.onrender.com)
+
 
 ## 👨‍💻 Author
 Ompreet Mohapatra
