@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Salary Predictor</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background: #f0f4f8;
+               display: flex; justify-content: center; padding: 40px 20px; }
+        .card { background: white; padding: 35px; border-radius: 16px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
+        h1 { color: #2d3748; text-align: center; margin-bottom: 24px; font-size: 24px; }
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .form-group { margin-bottom: 16px; }
+        label { display: block; color: #4a5568; font-size: 13px;
+                font-weight: 600; margin-bottom: 5px; }
+        input, select { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e0;
+                        border-radius: 8px; font-size: 14px; color: #2d3748; }
+        input:focus, select:focus { outline: none; border-color: #4f46e5; }
+        button { width: 100%; padding: 14px; background: #4f46e5; color: white;
+                 border: none; border-radius: 8px; font-size: 16px;
+                 font-weight: bold; cursor: pointer; margin-top: 8px; }
+        button:hover { background: #4338ca; }
+        .result { margin-top: 20px; padding: 18px; background: #ebf8ff;
+                  border-radius: 10px; text-align: center;
+                  color: #2b6cb0; font-size: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1>💼 Job Salary Predictor</h1>
+    <form action="/predict" method="POST">
+
+        <div class="form-group">
+            <label>Job Title</label>
+            <select name="job_title">
+                <option>AI Engineer</option>
+                <option>Data Scientist</option>
+                <option>ML Engineer</option>
+                <option>DevOps Engineer</option>
+                <option>Data Analyst</option>
+                <option>Software Engineer</option>
+                <option>Backend Developer</option>
+                <option>Frontend Developer</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Experience (years)</label>
+                <input type="number" name="experience_years" min="0" max="40" placeholder="e.g. 5" required>
+            </div>
+            <div class="form-group">
+                <label>Skills Count</label>
+                <input type="number" name="skills_count" min="0" max="30" placeholder="e.g. 8" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Education Level</label>
+                <select name="education_level">
+                    <option>High School</option>
+                    <option>Bachelor</option>
+                    <option>Master</option>
+                    <option>PhD</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Certifications</label>
+                <input type="number" name="certifications" min="0" max="20" placeholder="e.g. 2" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Industry</label>
+                <select name="industry">
+                    <option>Technology</option>
+                    <option>Finance</option>
+                    <option>Healthcare</option>
+                    <option>Education</option>
+                    <option>Retail</option>
+                    <option>Manufacturing</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Company Size</label>
+                <select name="company_size">
+                    <option>Small</option>
+                    <option>Medium</option>
+                    <option>Large</option>
+                    <option>Enterprise</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Location</label>
+                <select name="location">
+                    <option>USA</option>
+                    <option>UK</option>
+                    <option>Canada</option>
+                    <option>Australia</option>
+                    <option>India</option>
+                    <option>Germany</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Remote Work</label>
+                <select name="remote_work">
+                    <option>Yes</option>
+                    <option>No</option>
+                    <option>Hybrid</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit">🔍 Predict Salary</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+</div>
+</body>
+</html>
